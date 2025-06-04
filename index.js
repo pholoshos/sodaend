@@ -8,10 +8,17 @@ const config = {
     ping: 30,
     ping_timeout: 60
   },
+  
   http: {
     port: 3001,
     allow_origin: '*',
-    mediaroot: './media',
+    mediaroot: './',
+    api: true,
+    flv: true, 
+  },
+  api: {
+    port: 3001,
+    allow_origin: '*'
   },
   trans: {
     ffmpeg: '/usr/local/bin/ffmpeg',
@@ -20,20 +27,20 @@ const config = {
         app: 'live',
         hls: true,
         hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
-        ac: 'aac', // Using AAC codec for better quality
+        ac: 'aac',
         acParam: [
-          '-b:a', '320k',      // Increased bitrate to 320kbps for high quality
-          '-acodec', 'aac',    // Explicitly set AAC codec
-          '-ar', '48000',      // Increased sample rate to 48kHz
-          '-af', 'aresample=async=1000', // Helps prevent audio drift
-          '-profile:a', 'aac_low', // AAC-LC profile for better compatibility
-          '-q:a', '0'          // Highest quality setting
+          '-b:a', '320k',
+          '-acodec', 'aac',
+          '-ar', '48000',
+          '-af', 'aresample=async=1000',
+          '-profile:a', 'aac_low',
+          '-q:a', '0'
         ],
-        vcParam: [], // Empty video params since we're doing audio only
+        vcParam: [],
         preset: 'audio',
-        audioBitrate: 320,     // Matching the higher bitrate
-        audioChannels: 2,      // Stereo audio
-        audioSampleRate: 48000 // Higher sample rate for better quality
+        audioBitrate: 320,
+        audioChannels: 2,
+        audioSampleRate: 48000
       }
     ]
   }
