@@ -36,7 +36,16 @@ const config = {
           '-profile:a', 'aac_low',
           '-q:a', '0'
         ],
-        vcParam: [],
+        vcParam: [
+          '-vcodec', 'libx264',
+          '-vb', '64k',
+          '-r', '10',
+          '-s', '320x240',
+          '-preset', 'ultrafast',
+          '-crf', '51',
+          '-g', '60',
+          '-keyint_min', '60'
+        ],
         preset: 'audio',
         audioBitrate: 320,
         audioChannels: 2,
